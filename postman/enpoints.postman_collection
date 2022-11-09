@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "73b37784-1eeb-4df8-b9c6-a0ef049fd18b",
+		"name": "relog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15968083"
+	},
+	"item": [
+		{
+			"name": "Requerimiento",
+			"item": [
+				{
+					"name": "Solicitud",
+					"item": [
+						{
+							"name": "Create Solicitud",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"requerimientoid\" : 1,\r\n    \"efecto\" : 4,\r\n    \"cantidad\" : 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/solicitud",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"solicitud"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Solicitud By Id",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Crear Requerimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"organizacionId\": 1,\r\n    \"cantidadDiasParaEntregar\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/requerimiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requerimiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Requerimiento",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Solicitudes By Requerimiento Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Confirmar Requerimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/requerimiento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requerimiento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Requerimiento by Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organizacion",
+			"item": [
+				{
+					"name": "Efecto",
+					"item": [
+						{
+							"name": "Create Efecto",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tipo\" :   1,\r\n    \"descripcionTipo\" : \"efecto desayuno\", \r\n    \"cantidad\" : 1, \r\n    \"unidadMedida\" :  \"kg\",\r\n    \"claseId\" : 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/efecto",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"efecto"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Movimiento",
+					"item": [
+						{
+							"name": "Create Movimiento",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizacionId\" : 1,\r\n    \"eAbastecimientoId\" : 1,\r\n    \"cantidad\" : 15,\r\n    \"descripcion\" : \"egreso\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/movimiento/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movimiento",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Organizacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"ong\",\r\n    \"pocision\" : {\r\n        \"latitud\" : 1.6,\r\n        \"longitud\" : 2.7\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/organizacion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"organizacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movimientos By Organicacion id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Efectos By Organizacion Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Organizacion By Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
