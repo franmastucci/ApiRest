@@ -6,6 +6,8 @@ Trabajo Final Api Rest
 * Descargar el proyecto o clonarlo.
 * Ejecutar el proyecto.
 * Importar las colecciones Postman que se encuentran en la carpeta Postman .
+* Ejecutar la base de datos en memoria  para corroborar el correcto almacenamiento de datos. http://localhost:8080/h2-console
+(El usuario y pass de la BBDD se encuentran declarados en el archivo application.yml)
 * Ejecutar las peticiones en el siguiente orden sugerido para probar todas las funcionalidades .
 
 
@@ -47,7 +49,7 @@ Trabajo Final Api Rest
     - /organizacion/{organizacion_id}
     
     
- ## 6. Adicionalmente se puede crear un Efecto de forma manual para una Organizacion
+ ## 6. Adicionalmente se puede crear un Efecto de forma manual
 **El request para crear un Efecto se compone de los siguientes atributos:**
 
     - tipo
