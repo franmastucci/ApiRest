@@ -72,28 +72,28 @@ Trabajo Final Api Rest
  ## 9. Obtener los datos completos de  un Requerimiento
 **El request para ver los datos de un Requerimiento se realiza desde la siguiente ruta:**
 
-    /requerimiento/{requerimiento_id}
+    - /requerimiento/{requerimiento_id}
     
  ## 10. Obtener los datos completos de una Solicitud
 **El request para ver los datos de un Solicitud se realiza desde la siguiente ruta:**
 
-    /solicitud/{solicitud_id}
+    - /solicitud/{solicitud_id}
     
  ## 11. Obtener todas las Solicitudes de un Requerimiento
 **El request para ver las Solicitudes de un Eequerimiento se realiza desde la siguiente ruta:**
 
-    /requerimiento/solicitudes/{requerimeinto_id}
+    - /requerimiento/solicitudes/{requerimeinto_id}
     
  ## 12. Confirmar un Requerimiento
 **El request para confirmar un Requerimiento se realiza desde la siguiente ruta:**
 
-    /requerimiento/{requerimeinto_id}
+    - /requerimiento/{requerimeinto_id}
     
 * La peticion devolverá un boolean confirmando o no el requerimiento. El criterio para confirmar el requeirmiento se basa en que los efectos asociados a las solicitudes del requerimiento estén para la organizacion por debajo de la cantidad necesaria, es decir, en estado "con faltantes" Si esto no es así, el reuqerimiento no podrá ser confirmado
 
  ## 13. Agregar un Requerimiento
 **El request para agregar un Requerimiento se realiza desde la siguiente ruta:**
 
-    /requerimiento/{requermiento_id}/{organizacion_id}   
+    - /requerimiento/{requermiento_id}/{organizacion_id}   
 
 
