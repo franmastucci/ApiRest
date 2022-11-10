@@ -2,17 +2,30 @@ package com.undef.api.Relog.model.request;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 @Data
 public class EfectoRequest {
 
+    @NotNull
     private Integer tipo;  //puede ser 1,2 0 3
 
-    private String descripcionTipo; //puede ser "Racionamiento", "vestuario y equipo" o "Combustible y lubricante" /desayuno nombre de la clase
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private String descripcionTipo;
 
-    private Long cantidad; //cantidad de unidades de la unidad de medida
+    @NotNull
+    private Long cantidad;
 
-    private String unidadMedida;  //puede ser "litros", "kilos" o "unidades"
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private String unidadMedida;
 
+    @NotNull
     private Long claseId;
 
 }

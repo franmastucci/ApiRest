@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/efecto")
 public class EfectoController {
@@ -19,7 +21,7 @@ public class EfectoController {
     private EfectoService efectoService;
 
     @PostMapping
-    public ResponseEntity<EfectoResponse> create(@RequestBody EfectoRequest request) {
+    public ResponseEntity<EfectoResponse> create(@Valid @RequestBody EfectoRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(efectoService.create(request));
     }
 

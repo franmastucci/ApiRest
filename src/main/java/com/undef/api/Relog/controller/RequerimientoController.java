@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,7 @@ public class RequerimientoController {
     RequerimientoService requerimientoService;
 
     @PostMapping()
-    public ResponseEntity<RequerimientoResponse> create(@RequestBody RequerimientoRequest request) {
+    public ResponseEntity<RequerimientoResponse> create(@Valid @RequestBody RequerimientoRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(requerimientoService.create(request));
     }
 

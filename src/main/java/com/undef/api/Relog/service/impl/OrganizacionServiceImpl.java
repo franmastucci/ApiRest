@@ -1,5 +1,6 @@
 package com.undef.api.Relog.service.impl;
 
+import com.undef.api.Relog.exception.GenericAlreadyExists;
 import com.undef.api.Relog.model.entity.Efecto;
 import com.undef.api.Relog.model.entity.EstadoAbastecimiento;
 import com.undef.api.Relog.model.entity.Organizacion;
@@ -13,6 +14,7 @@ import com.undef.api.Relog.service.OrganizacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +37,9 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 
     @Override
     public OrganizacionResponse create(OrganizacionRequest request) {
+        if(Optional.ofNullable(organizacionRepository.findByNombre(request.getNombre())).isPresent()) {
+            throw new GenericAlreadyExists("el nombre de organizacion '"+request.getNombre()+"' ya existe");
+        }
        var org = this.saveOrganizacion(request);
        return this.getBuildOrganizacionresponse(org);
     }
