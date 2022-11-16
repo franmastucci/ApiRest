@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class SolicitudController {
     SolicitudService solicitudService;
 
     @PostMapping()
-    public ResponseEntity<SolicitudResponse> create(@RequestBody SolicitudRequest request) {
+    public ResponseEntity<SolicitudResponse> create(@Valid @RequestBody SolicitudRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(solicitudService.create(request));
     }
 

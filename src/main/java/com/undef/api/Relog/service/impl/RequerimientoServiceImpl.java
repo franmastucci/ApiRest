@@ -1,5 +1,6 @@
 package com.undef.api.Relog.service.impl;
 
+import com.undef.api.Relog.exception.GenericNotFoundException;
 import com.undef.api.Relog.model.entity.Requerimiento;
 import com.undef.api.Relog.model.entity.Solicitud;
 import com.undef.api.Relog.model.request.MovimientoRequest;
@@ -39,7 +40,6 @@ public class RequerimientoServiceImpl implements RequerimientoService {
 
     @Override
     public RequerimientoResponse create(RequerimientoRequest request) {
-        organizacionRepository.findById(request.getOrganizacionId()).orElseThrow(RuntimeException::new);
         var requerimiento = requerimientoRepository.save(getBuildRequerimiento(request));
         return getBuildRequerimentoResponse(requerimiento);
     }

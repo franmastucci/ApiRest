@@ -1,6 +1,7 @@
 package com.undef.api.Relog.service.impl;
 
-import com.undef.api.Relog.exception.GenericAlreadyExists;
+import com.undef.api.Relog.exception.GenericAlreadyExistsExeption;
+import com.undef.api.Relog.exception.GenericNotFoundException;
 import com.undef.api.Relog.model.entity.Efecto;
 import com.undef.api.Relog.model.entity.EstadoAbastecimiento;
 import com.undef.api.Relog.model.entity.Organizacion;
@@ -14,7 +15,6 @@ import com.undef.api.Relog.service.OrganizacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +38,7 @@ public class OrganizacionServiceImpl implements OrganizacionService {
     @Override
     public OrganizacionResponse create(OrganizacionRequest request) {
         if(Optional.ofNullable(organizacionRepository.findByNombre(request.getNombre())).isPresent()) {
-            throw new GenericAlreadyExists("el nombre de organizacion '"+request.getNombre()+"' ya existe");
+            throw new GenericAlreadyExistsExeption("el nombre de organizacion '"+request.getNombre()+"' ya existe");
         }
        var org = this.saveOrganizacion(request);
        return this.getBuildOrganizacionresponse(org);
@@ -58,6 +58,10 @@ public class OrganizacionServiceImpl implements OrganizacionService {
                             .cantidad(movimientoPersistent.getCantidad())
                             .build());
                 });
+
+        if(list.isEmpty())
+            throw new GenericNotFoundException("No se encontraron movimientos asociados al organizacion id: "+ organizacion_id );
+
         return list;
     }
 
@@ -76,12 +80,16 @@ public class OrganizacionServiceImpl implements OrganizacionService {
                             .build());
                 });
 
+        if(list.isEmpty())
+            throw  new GenericNotFoundException("No se encontraron efectos asociados al organizacion id: "+ organizacion_id);
+
         return list;
     }
 
     @Override
     public OrganizacionResponse getOrganizacionById(Long organizacion_id) {
-        var org = organizacionRepository.getReferenceById(organizacion_id);
+        var org = Optional.ofNullable(organizacionRepository.getReferenceById(organizacion_id));
+
         var estados = estadoAbastecimientoRepository.findAByOrganizacionId(organizacion_id);
         List<EstadoAbastecimientoResponse> estadosResponse = new ArrayList<>();
         estados.stream().
@@ -95,10 +103,13 @@ public class OrganizacionServiceImpl implements OrganizacionService {
                             .build());
                 });
 
+        if(estadosResponse.isEmpty())
+            throw  new GenericNotFoundException("no hay organizaciones asociadas al organizacion id: " + organizacion_id);
+
         return  OrganizacionResponse.builder()
-                .nombre(org.getNombre())
-                .organizacionId(org.getOrganizacionId())
-                .posicion(org.getPosicion())
+                .nombre(org.get().getNombre())
+                .organizacionId(org.get().getOrganizacionId())
+                .posicion(org.get().getPosicion())
                 .estados(estadosResponse)
                 .build();
 

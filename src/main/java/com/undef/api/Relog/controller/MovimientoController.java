@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/movimiento")
 public class MovimientoController {
@@ -16,7 +18,7 @@ public class MovimientoController {
     MovimientoService movimientoService;
 
     @PostMapping("/{tipo}")
-    public ResponseEntity<MovimientoResponse> crearMovoimiento(@RequestBody MovimientoRequest request, @PathVariable("tipo") Long tipo){
+    public ResponseEntity<MovimientoResponse> crearMovoimiento(@Valid  @RequestBody MovimientoRequest request, @PathVariable("tipo") Long tipo){
         return ResponseEntity.status(HttpStatus.CREATED).body(movimientoService.generarMovimiento(request,tipo));
     }
 

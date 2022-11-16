@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class OrganizacionController {
     OrganizacionService organizacionService;
 
     @PostMapping()
-    public ResponseEntity<OrganizacionResponse> create(@RequestBody OrganizacionRequest request) {
+    public ResponseEntity<OrganizacionResponse> create(@Valid @RequestBody OrganizacionRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(organizacionService.create(request));
     }
 
@@ -39,7 +40,5 @@ public class OrganizacionController {
     public ResponseEntity<List<EfectoResponse>> getEfectosByOrganizacionid(@PathVariable Long organizacion_id) {
         return ResponseEntity.status(HttpStatus.CREATED).body(organizacionService.getEfectos(organizacion_id));
     }
-
-
 
 }
